@@ -1,2 +1,2 @@
 # oekaki-
-お絵かきするwebaplicjation
+お絵かきするwebapliccation

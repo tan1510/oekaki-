@@ -1,0 +1,23 @@
+/*
+---------
+ 要編集
+ --------
+ */
+
+body {
+    background: rgb(13, 45, 151);
+     }
+
+
+ #canvas {
+    margin: 10px;
+    background: #ffffff;
+    border: 1px solid #aaaaaa;
+     }
+ input[type="image"]{
+   padding: 2px;
+   outline: none;
+   }
+input[type="image"].active{
+    background-color: #fff;
+      }

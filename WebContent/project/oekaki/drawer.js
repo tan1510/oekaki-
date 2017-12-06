@@ -8,8 +8,7 @@ var drawing = false;  //
 var b_x = 0;　//描画した際の最後のx座標
 var b_y = 0;　//描画した際の最後のy座標
 
-//マウスが動いている時描画
-canvas.addEventListener('mousemove',drawCanvas);
+
 
 canvas.addEventListener('mousedown',function(e) {
     drawing = true;
@@ -41,18 +40,22 @@ function drawCanvas(e){
     c_context.lineTo(x, y);
     c_context.stroke();
     c_context.closePath();
-
+//最後のマウス位置の更新
     b_x = x;
     b_y = y;
 }
 
+
+//マウスが動いている時描画
+canvas.addEventListener('mousemove',drawCanvas);
 //canvasをpng画像に変換する関数
 function change_pngimage(){
-    var png = canvas.toDataURL();
+    var png = canvas.toDataURL("image/png");
     // =png //png画像どどこかに保存
     document.getElementById("newImg").src = png;
 }
 
+//canvasの状態をリセットする
 function delete_canvas(){
     c_context.clearRect(0, 0, canvas.width, canvas.height);
 }

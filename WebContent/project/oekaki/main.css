@@ -13,6 +13,7 @@ body {
     margin: 10px;
     background: #ffffff;
     border: 1px solid #aaaaaa;
+    float: left;
      }
  input[type="image"]{
    padding: 2px;

@@ -45,3 +45,14 @@ function drawCanvas(e){
     b_x = x;
     b_y = y;
 }
+
+//canvasをpng画像に変換する関数
+function change_pngimage(){
+    var png = canvas.toDataURL();
+    // =png //png画像どどこかに保存
+    document.getElementById("newImg").src = png;
+}
+
+function delete_canvas(){
+    c_context.clearRect(0, 0, canvas.width, canvas.height);
+}

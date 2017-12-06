@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
  <head>
- 
+ <meta charset="utf-8">
  <link rel="stylesheet" type="text/css" href="main.css"/>
  
  <title>お絵かき</title>
  </head>
 <body>
 <!-- canvas 部分　id はjs  -->
- <canvas id="canvas" width="1080" height="960"></canvas>
+ <canvas id="canvas" width="1080" height="640"></canvas>
  <!--
  <label> color<input id ="color" type = "" </label>
  -->
-
+ <br>
+ <input type ="button" id="delete_canvas" value="リセット" onclick="delete_canvas()">
+ <input type ="button"id="color_select" value="色" onClick="tool(1)">
+ <input type ="button"id="color_select" value="消しゴム" onClick="tool(2)">
+ <br>
+ <input type="button" value="画像に変換" onclick="change_pngimage()">
+ <form action="" method="post">
+    <input type="file" name="hoge">
+    <input type="submit" name="upload" value="アップロード">
+  </form>
+ <div><img id="newImg"></div>
  <!--  canvas 以降に記述-->>
  <script type="text/javascript" src="drawer.js"></script>
 </body>

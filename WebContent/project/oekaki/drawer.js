@@ -65,14 +65,14 @@ var xmlHttpRequest;
 
 function sendWithPostMethod() {
 	var base64 = canvas.toDataURL();
-	
+	alert(base64);
 	var url = "echo";
 	
 	xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = receive;
 	xmlHttpRequest.open("POST", url, true);
 	xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xmlHttpRequest.send("message=" + messageElement.value + "&method=post");
+	xmlHttpRequest.send("message=" + base64 + "&method=post");
 }
 
 window.addEventListener("load",function() { 

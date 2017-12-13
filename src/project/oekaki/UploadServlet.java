@@ -10,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 import java.util.Base64;
+
+@WebServlet("/project/oekaki/echo")
 public class UploadServlet extends HttpServelet{
-
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(request.getParamater("messeage"));

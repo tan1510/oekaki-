@@ -50,8 +50,9 @@ function drawCanvas(e){
 canvas.addEventListener('mousemove',drawCanvas);
 //canvasをpng画像に変換する関数
 function change_pngimage(){
-    var png = canvas.toDataURL("image/png");
+    var png = canvas.toDataURL();
     // =png //png画像どどこかに保存
+    alert(png);
     document.getElementById("newImg").src = png;
 }
 
@@ -59,3 +60,23 @@ function change_pngimage(){
 function delete_canvas(){
     c_context.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+var xmlHttpRequest;
+
+function sendWithPostMethod() {
+	var base64 = canvas.toDataURL();
+	
+	var url = "echo";
+	
+	xmlHttpRequest = new XMLHttpRequest();
+	xmlHttpRequest.onreadystatechange = receive;
+	xmlHttpRequest.open("POST", url, true);
+	xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xmlHttpRequest.send("message=" + messageElement.value + "&method=post");
+}
+
+window.addEventListener("load",function() { 
+    var postButtonElement = document.getElementById("send_data");
+    postButtonElement.addEventListener("click", sendWithPostMethod, false);
+
+},false);

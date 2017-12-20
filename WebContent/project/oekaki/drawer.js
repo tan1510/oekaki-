@@ -63,10 +63,19 @@ function delete_canvas(){
 
 var xmlHttpRequest;
 
+function receive() {
+	if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+		var response = JSON.parse(xmlHttpRequest.responseText);
+		
+		var echoMessageElement = document.getElementById("echo_message");
+		
+	}
+}
+
 function sendWithPostMethod() {
 	var base64 = canvas.toDataURL();
 	alert(base64);
-	var url = "echo";
+	var url = "post";
 	
 	xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = receive;
@@ -74,6 +83,8 @@ function sendWithPostMethod() {
 	xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xmlHttpRequest.send("message=" + base64 + "&method=post");
 }
+
+
 
 window.addEventListener("load",function() { 
     var postButtonElement = document.getElementById("send_data");

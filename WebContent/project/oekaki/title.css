@@ -1,3 +1,12 @@
+body{
+      /*背景画像の設定*/
+      background-image: url("resources/image/main_background.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #464646;
+}
 h1 {
     padding-bottom: .5em;
     border-bottom: 1px solid #ccc;

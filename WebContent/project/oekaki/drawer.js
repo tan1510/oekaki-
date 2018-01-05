@@ -1,14 +1,24 @@
 //変数
-
+var eraserActivated = false;
 //キャンバスの部分
 var canvas = document.getElementById('canvas');
 var c_context = canvas.getContext('2d');
-
+c_context.fillStyle = 'rgb(255,255,255)';
+    c_context.fillRect(0,0,512,512);
+	   
 var drawing = false;  //
 var b_x = 0;　//描画した際の最後のx座標
 var b_y = 0;　//描画した際の最後のy座標
 
-
+function eraser(){
+    if(eraserActivated){
+        c_context.globalCompositeOperation = 'source-over';
+        eraserActivated=false;
+    }else{
+        c_context.globalCompositeOperation  = 'destination-out';
+        eraserActivated=true;
+    }
+    }
 
 canvas.addEventListener('mousedown',function(e) {
     drawing = true;
@@ -24,6 +34,8 @@ canvas.addEventListener('mouseup',function(){
 
 //mousemoveの時に実行する関数
 function drawCanvas(e){
+    var color = document.getElementById('color').value; //追加
+    c_context.strokeStyle = color; //変更
     if(!drawing){
         return
     };
@@ -33,7 +45,7 @@ function drawCanvas(e){
     var y = e.clientY - rect.top;
 
     c_context.lineCap = 'round';
-    c_context.strokeStyle = 'black';
+ //   c_context.strokeStyle = 'red';
     c_context.lineWidth = '10px';
     c_context.beginPath();
     c_context.moveTo(b_x, b_y);
@@ -52,7 +64,6 @@ canvas.addEventListener('mousemove',drawCanvas);
 function change_pngimage(){
     var png = canvas.toDataURL();
     // =png //png画像どどこかに保存
-    alert(png);
     document.getElementById("newImg").src = png;
 }
 
@@ -65,26 +76,29 @@ var xmlHttpRequest;
 
 function receive() {
 	if(xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
-		var response = JSON.parse(xmlHttpRequest.responseText);
-		
-		var echoMessageElement = document.getElementById("echo_message");
+        console.log("receive")
+        console.log(xmlHttpRequest.responseText)
 		
 	}
 }
 
 function sendWithPostMethod() {
-	var base64 = canvas.toDataURL();
-	alert(base64);
+    var base64 = canvas.toDataURL("png");
+    console.log(base64);
+    //decode
+    //var encstr = encodeURIComponent(base64);
+   // console.log("encoded")
+   // console.log(encstr);
+    var name = document.getElementById("savename").value;
+  //  console.log(name);
 	var url = "post";
 	
 	xmlHttpRequest = new XMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = receive;
 	xmlHttpRequest.open("POST", url, true);
 	xmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xmlHttpRequest.send("message=" + base64 + "&method=post");
+	xmlHttpRequest.send("bin=" + base64 +"&name=" + name + "&method=post");
 }
-
-
 
 window.addEventListener("load",function() { 
     var postButtonElement = document.getElementById("send_data");

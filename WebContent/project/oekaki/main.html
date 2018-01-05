@@ -8,6 +8,7 @@
  </head>
 <body>
 <!-- canvas 部分　id はjs  -->
+<input type ="button"　 id="start_draw" value="タイトルに戻る" onclick="location.href='http://localhost:8080/isp2/project/oekaki/title.html'">
  <canvas id="canvas" width="512" height="512"></canvas>
  <!--
  <label> color<input id ="color" type = "" </label>
@@ -15,16 +16,19 @@
  <br>
  <input type ="button" id="delete_canvas" value="リセット" onclick="delete_canvas()">
  <br>
- <input type ="button"id="color_select" value="色" onClick="tool(1)">
+ <label>色<input id ="color" type="color"></label>
  <br>
- <input type ="button"id="color_select" value="消しゴム" onClick="tool(2)">
+ <input type ="button"id="color_select" value="消しゴム" onClick="eraser()">
  <br>
  <input type="button" value="画像に変換" onclick="change_pngimage()">
  <br>
+  <!--
  <input type="file" name="example" size="30">
- <button id = "send_data" type="button">POST</button>
+  -->
+ 保存名:<input type="text" id="savename" maxlength="15">
+ <button id = "send_data" type="button">保存</button>
  <div><img id="newImg"></div>
- <!--  canvas 以降に記述-->>
+ <!--  canvas 以降に記述-->
  <script type="text/javascript" src="drawer.js"></script>
 </body>
 </html>
